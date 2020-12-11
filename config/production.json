@@ -1,0 +1,6 @@
+{
+    "mongoURL":"mongodb+srv://Sara205:sara205@devconnector.bqfsz.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtSecret":"mysecrettoken",
+    "githubClientId":"1644f05fd066fa7398db",
+    "githubSecret":"bbed725361fcdcad1f9919ae23b203254c5e80ff"
+}
