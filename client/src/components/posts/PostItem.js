@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux"
@@ -6,6 +6,7 @@ import Moment from "react-moment"
 import { addLike, removeLike, deletePost } from "../../actions/post"
 
 const PostItem = ({ showActions = true, addLike, removeLike, deletePost, post: { _id, text, name, avatar, user, likes, comments, date }, auth }) => {
+    const [color, setColor] = useState("black")
     return (
         <div className="post bg-white p-1 my-1">
             <div>
@@ -21,11 +22,18 @@ const PostItem = ({ showActions = true, addLike, removeLike, deletePost, post: {
                 </p>
                 {showActions && (
                     <Fragment>
-                        <button type="button" className="btn btn-light" onClick={() => addLike(_id)}>
-                            <i className="fas fa-thumbs-up"></i>{" "}
+                        <button type="button" className="btn btn-light" onClick={() => {
+                            addLike(_id)
+                            setColor("blue")
+                        }
+                        }>
+                            <i style={{ color: color }} className="fas fa-thumbs-up"></i>{" "}
                             <span> {likes.length > 0 && (<span>{likes.length}</span>)}</span>
                         </button>
-                        <button type="button" className="btn btn-light" onClick={() => removeLike(_id)}>
+                        <button type="button" className="btn btn-light" onClick={() => {
+                            removeLike(_id)
+                            setColor("black")
+                        }}>
                             <i className="fas fa-thumbs-down"></i>
                         </button>
                         <Link to={`/posts/${_id}`} className="btn btn-primary">
